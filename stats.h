@@ -9,13 +9,13 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
+ * @file stats.h
  * @brief <Add Brief Description Here >
  *
  * <Add Extended Description Here>
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author MDominguez
+ * @date 24.12.2017
  *
  */
 #ifndef __STATS_H__
@@ -35,6 +35,70 @@
  *
  * @return <Add Return Informaiton here>
  */
-
-
+void print_statistics(char min, unsigned char max, char mean, char med);
+/**
+ * @brief <Add Brief Description of Function Here>
+ *
+ * <Add Extended Description Here>
+ *
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ *
+ * @return <Add Return Informaiton here>
+ */
+char find_median(char * array, char len, char *ave);
+/**
+ * @brief <Add Brief Description of Function Here>
+ *
+ * <Add Extended Description Here>
+ *
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ *
+ * @return <Add Return Informaiton here>
+ */
+char find_mean(unsigned char * array, char len, unsigned char *mean);
+/**
+ * @brief <Add Brief Description of Function Here>
+ *
+ * <Add Extended Description Here>
+ *
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ *
+ * @return <Add Return Informaiton here>
+ */
+char find_maximum(unsigned char * array, char len, unsigned char *max);
+/**
+ * @brief <Add Brief Description of Function Here>
+ *
+ * <Add Extended Description Here>
+ *
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ *
+ * @return <Add Return Informaiton here>
+ */
+char find_minimum(unsigned char * array, char len, unsigned char *min);
+/**
+ * @brief <Add Brief Description of Function Here>
+ *
+ * <Add Extended Description Here>
+ *
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ * @param <Add InputName> <add description here>
+ *
+ * @return <Add Return Informaiton here>
+ */
+char sort_array(unsigned char * array, unsigned char * array_output, char len);
 #endif /* __STATS_H__ */
