@@ -35,14 +35,9 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-
-
-
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
-  
   print_statistics(test, SIZE);
-
 }
 
 /* Add other Implementation File Code Here */
@@ -64,7 +59,6 @@ void print_statistics(unsigned char * array, unsigned char len)
    printf(" %d",array[i]);
   }
   printf("]\n");
-
   printf("--- Number of unsigned char elements = %d\n",len); 
 
   result = sort_array(array,len,0);
