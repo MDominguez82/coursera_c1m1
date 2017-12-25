@@ -24,81 +24,84 @@
 /* Add Your Declarations and Function Comments here */ 
 
 /**
- * @brief <Add Brief Description of Function Here>
+ * @brief prints several information related to an unsigned char values array
  *
  * <Add Extended Description Here>
  *
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- *
- * @return <Add Return Informaiton here>
+ * @param <Input:  unsigned char * array> < pointer to array data>
+ * @param <Input:  unsigned char len>     < number of uchar contained in array>
+
+ * @return <void>
  */
-void print_statistics(char min, unsigned char max, char mean, char med);
+void print_statistics(unsigned char * array, unsigned char len);
+
+
 /**
- * @brief <Add Brief Description of Function Here>
+ * @brief <Finds median of an unsigned char values array>
  *
  * <Add Extended Description Here>
  *
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
+ * @param <Input:  unsigned char * array> < pointer to array data>
+ * @param <Input:  unsigned char len>     < number of uchar contained in array>
+ * @param <Output: unsigned char *ave>    < pointer to hold median value>
  *
- * @return <Add Return Informaiton here>
+ * @return <unsigned char>
  */
-char find_median(char * array, char len, char *ave);
+unsigned char find_median(unsigned char * array, unsigned char len, unsigned char *ave);
+
+
 /**
- * @brief <Add Brief Description of Function Here>
+ * @brief <Finds mean of an unsigned char values array>
  *
  * <Add Extended Description Here>
  *
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
+ * @param <Input:  unsigned char * array> < pointer to array data>
+ * @param <Input:  unsigned char len>     < number of uchar contained in array>
+ * @param <Output: unsigned char *ave>    < pointer to hold mean value>
  *
- * @return <Add Return Informaiton here>
+ * @return <unsigned char>
  */
-char find_mean(unsigned char * array, char len, unsigned char *mean);
+unsigned char find_mean(unsigned char * array, unsigned char len, unsigned char *mean);
+
+
 /**
- * @brief <Add Brief Description of Function Here>
+ * @brief <Finds maximum of an unsigned char values array>
  *
  * <Add Extended Description Here>
  *
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
+ * @param <Input:  unsigned char * array> < pointer to array data>
+ * @param <Input:  unsigned char len>     < number of uchar contained in array>
+ * @param <Output: unsigned char *ave>    < pointer to hold max value>
  *
- * @return <Add Return Informaiton here>
+ * @return <unsigned char>
  */
-char find_maximum(unsigned char * array, char len, unsigned char *max);
+unsigned char find_maximum(unsigned char * array, unsigned char len, unsigned char *max);
+
+
 /**
- * @brief <Add Brief Description of Function Here>
+ * @brief <Finds minimum of an unsigned char values array>
  *
  * <Add Extended Description Here>
  *
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
+ * @param <Input:  unsigned char * array> < pointer to array data>
+ * @param <Input:  unsigned char len>     < number of uchar contained in array>
+ * @param <Output: unsigned char *ave>    < pointer to hold min value>
  *
- * @return <Add Return Informaiton here>
+ * @return <unsigned char> 
  */
-char find_minimum(unsigned char * array, char len, unsigned char *min);
+unsigned char find_minimum(unsigned char * array, unsigned char len, unsigned char *min);
+
+
 /**
- * @brief <Add Brief Description of Function Here>
+ * @brief <sort given unsigned char array>
  *
  * <Add Extended Description Here>
  *
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
+ * @param <Input/Output: unsigned char * array> <input array to be sorted>
+ * @param <Input:  unsigned char len>           < number of uchar contained in array>
+ * @param <Input:  unsigned char order>         < 0: descending; 1 ascending>
  *
- * @return <Add Return Informaiton here>
+ * @return <unsigned char>
  */
-char sort_array(unsigned char * array, unsigned char * array_output, char len);
+unsigned char sort_array(unsigned char * array, unsigned char len,unsigned char order);
 #endif /* __STATS_H__ */

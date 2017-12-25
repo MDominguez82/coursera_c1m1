@@ -35,53 +35,92 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-  char median  = 0;
-  unsigned char mean    = 0;
-  unsigned char minimum = 0;
-  unsigned char maximum = 0;
-  unsigned char test_ordered[SIZE];
-  char result  = 1;
+
+
 
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
-
-  result = find_median(test,SIZE,&median);
-  result = find_mean(test,SIZE, &mean);
-  result = find_minimum(test,SIZE, &minimum);
-  result = find_maximum(test,SIZE, &maximum);
-  result = sort_array(test,test_ordered,SIZE);
-  print_statistics(minimum,maximum,mean,median);
+  
+  print_statistics(test, SIZE);
 
 }
 
 /* Add other Implementation File Code Here */
 
-//print_statistics() - A function that prints the statistics of an array including minimum, ///////maximum, mean, and median.
 
-void print_statistics(char min, unsigned char max, char mean, char med)
+void print_statistics(unsigned char * array, unsigned char len)
 {
-   printf("--Minimum = %d\n--Maximum = %d\n--Mean = %d\n--median = %d\n",min,max,mean,med);
+  unsigned char median  = 0;
+  unsigned char mean    = 0;
+  unsigned char minimum = 0;
+  unsigned char maximum = 0;
+  unsigned char result  = 1; //0 ok; >0 error
+
+  printf("Printing stadistics of following array:\n");
+  
+  printf("-- Array = [");
+  for (int i = 0; i< len; i++) 
+  {
+   printf(" %d",array[i]);
+  }
+  printf("]\n");
+
+  printf("--- Number of unsigned char elements = %d\n",len); 
+
+  result = sort_array(array,len,0);
+  printf("--- Sorted array (descending) =\n");
+  printf("---> [");
+  for (int i = 0; i< len; i++) 
+  {
+   printf(" %d",array[i]);
+  }
+  printf("]\n");
+
+  result = find_median(array, len,&median);
+  result = find_mean(array, len,&mean);
+  result = find_maximum(array, len,&maximum);
+  result = find_minimum(array, len,&minimum);
+
+  printf("--- Median = %d\n",median); 
+  printf("--- Mean = %d\n",mean);
+  printf("--- Maximum = %d\n",maximum); 
+  printf("--- Minimum = %d\n",minimum);
+
 }
 
-//Given an array of data and a length, returns the median value
-char find_median(char * array, char len, char *ave)
+unsigned char find_median(unsigned char * array, unsigned char len, unsigned char *ave)
 {
-  char return_val = 1;
-  char * ptr = ave;
+  unsigned char return_val = 1;
+  unsigned char * ptr = ave;
+  unsigned char  tmp  = 0; 
+
   if ((0 != len) && (NULL != ptr))
   {
-   *ptr = 3;
+    //First sort array
+    return_val = sort_array(array,len,1);
+    //Check odd/even
+    if (0 == (len%2))
+    {
+      //even
+     tmp = len/2;
+     *ptr = (array[tmp]+array[tmp+1])/2;
+    }
+    else
+    {
+      //odd; element len/2 +1 --> index len/2
+      tmp = len/2;
+      *ptr = array[tmp];
+    }
+  
    return_val = 0;
   }
   return return_val;
-
 }
 
 
-// Given an array of data and a length, returns the mean
-char find_mean(unsigned char * array, char len, unsigned char *mean)
+unsigned char find_mean(unsigned char * array, unsigned char len, unsigned char *mean)
 {
-  char return_val = 1;
+  unsigned char return_val = 1;
   unsigned char * ptr = mean;
   unsigned int aux = 0;
 
@@ -99,11 +138,11 @@ char find_mean(unsigned char * array, char len, unsigned char *mean)
 }
 
 
-//find_maximum() - Given an array of data and a length, returns the maximum
-char find_maximum(unsigned char * array, char len, unsigned char * max)
+unsigned char find_maximum(unsigned char * array, unsigned char len, unsigned char * max)
 {
-  char return_val     = 1; 
+  unsigned char return_val     = 1; 
   unsigned char * ptr = max;
+
   if ((0 != len) && (NULL != ptr))
   {
     *ptr = array[0];
@@ -119,10 +158,9 @@ char find_maximum(unsigned char * array, char len, unsigned char * max)
   return return_val;
 }
 
-// Given an array of data and a length, returns the minimum
-char find_minimum(unsigned char * array, char len, unsigned char *min)
+unsigned char find_minimum(unsigned char * array, unsigned char len, unsigned char *min)
 {
-  char return_val = 1;
+  unsigned char return_val = 1;
   unsigned char * ptr = min;
   if ((0 != len) && (NULL != ptr))
   {
@@ -139,10 +177,52 @@ char find_minimum(unsigned char * array, char len, unsigned char *min)
   return return_val;
 }
 
-//Given an array of data and a length, sorts the array from largest to smallest. (The zeroth Element should be the largest value, and the last element (n-1) should be the smallest value. )
-char sort_array(unsigned char * array, unsigned char * array_output, char len)
+
+unsigned char sort_array(unsigned char * array, unsigned char len, unsigned char order)
 {
-  char return_val = 1;
+  unsigned char return_val = 1;
+  unsigned char tmp = 0;
+
+
+  if (0 != len)
+  {
+    //printf (" Unsorted array = ");
+    //for (int i = 0; i< len; i++) printf ("%d ",array[i]);  
+    //printf ("\n");
+
+    for (int i = 0; i< len; i++)
+    {
+     for(int j=i+1; j<len; j++)
+     {
+       if (0 == order)
+       {
+        //descending
+	if (array[i] < array[j])
+        {
+         tmp = array[i];
+         array[i] = array[j];
+         array[j] = tmp;
+        }
+       }
+       else
+       {
+        //ascending
+        if (array[i] > array[j])
+        {
+         tmp = array[i];
+         array[i] = array[j];
+         array[j] = tmp;
+        }
+       }
+     }
+   }
+  //printf (" Sorted array = ");
+  //for (int i = 0; i< len; i++) printf ("%d ",array[i]);  
+  //printf ("\n");
+
+  return_val = 0;
+  }
+
   return return_val;
 }
 
